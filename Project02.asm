@@ -1,11 +1,6 @@
 TITLE Fibonacci Numbers    (Project02.asm)
 
 ; Author:									Andrew Pierno
-; OSU Email:								piernoa@onid.oregonstate.edu
-; Course-Section:							CS271-400
-; Assignment Number :						02                 
-; Date:										4/9/15
-; Due Date:									4/19/15
 ; Description: Write a program to calculate Fibonacci numbers.
 ;	• Display the program title and programmer’s name. Then get the user’s name, and greet the user.
 ;	• Prompt the user to enter the number of Fibonacci terms to be displayed. Advise the user to enter an integer
@@ -34,7 +29,7 @@ firstOne			BYTE	"1", 0
 temp				DWORD	?
 moduloFive			DWORD	5
 UPPERLIMIT = 46
-LOWERLIMIT = 1	
+LOWERLIMIT = 1
 
 ;user's name
 buffer				BYTE 21 DUP(0)
@@ -78,7 +73,7 @@ val2 DWORD 16
 		mov		edx, OFFSET prompt_1
 		call	WriteString
 		call	CrLf
-		
+
 
 		; get user's name
 		mov		edx, OFFSET buffer	;point to the buffer
@@ -98,7 +93,7 @@ topPrompt:
 			mov		edx, OFFSET prompt_2
 			call	WriteString
 			call	CrLf
-	
+
 	; GET USER DATA
 		call	ReadInt
 		mov		numFib, eax
@@ -115,7 +110,7 @@ topPrompt:
 	; DISPLAY FIBS
 
 		; prepare loop (post-test), do the first two manually
-		
+
 		mov		ecx, numFib
 		sub		ecx, 3			; we start at iteration 3, the first two are taken care of by JustOne and JustTwo
 		mov		eax, 1
@@ -136,7 +131,7 @@ topPrompt:
 			; add prev 2 to eax
 			add		eax, prev2
 			call	WriteDec
-			
+
 			mov		edx, OFFSET spaces
 			call	WriteString
 
@@ -161,27 +156,27 @@ topPrompt:
 				loop	fib
 		jmp		TheEnd
 
-TooHigh: 
+TooHigh:
 			mov		edx, OFFSET tooHighError
 			call	WriteString
-			jmp		TopPrompt		
+			jmp		TopPrompt
 
-TooLow: 
+TooLow:
 			mov		edx, OFFSET tooLowError
 			call	WriteString
-			jmp		TopPrompt	
+			jmp		TopPrompt
 JustOne:
 			mov		edx, OFFSET firstOne
 			call	WriteString
-			jmp		TheEnd	
+			jmp		TheEnd
 
 JustTwo:
 			mov		edx, OFFSET firstTwo
 			call	WriteString
-			jmp		TheEnd	
+			jmp		TheEnd
 
 	; FAREWELL
-TheEnd:		
+TheEnd:
 			call	CrLf
 			mov		edx, OFFSET goodbye
 			call	WriteString
