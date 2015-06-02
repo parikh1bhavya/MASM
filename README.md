@@ -40,3 +40,13 @@ Description: Write a program to calculate Fibonacci numbers.
  Write a program to calculate composite numbers. First, the user is instructed to enter the number of composites to be displayed, and is prompted to enter an integer in the range [1 .. 400]. The user enters a number, n, and the program verifies that 1 <= n <= 400.
 
  If n is out of range, the user is re- prompted until s/he enters a value in the specified range. The program then calculates and displays all of the composite numbers up to and including the nth composite. The results should be displayed 10 composites per line with at least 3 spaces between the numbers.
+
+# Project 5
+ Write and test a MASM program to perform the following tasks:
+ 1. Introduce the program.
+ 2. Get a user request in the range [min = 10 .. max = 200].
+ 3. Generate request random integers in the range [lo = 100 .. hi = 999], storing them in consecutive elements
+ of an array.
+ 4. Display the list of integers before sorting, 10 numbers per line.
+ 5. Sort the list in descending order (i.e., largest first).
+ 6. Calculate and display the median value, rounded to the nearest integer. 7. Display the sorted list, 10 numbers per line.
