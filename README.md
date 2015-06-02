@@ -34,3 +34,9 @@ Description: Write a program to calculate Fibonacci numbers.
 	ii. the sum of negative numbers entered
 	iii. the average, rounded to the nearest integer (e.g. -20.5 rounds to -20)
 	iv. a parting message (with the user’s name)
+
+# Project 4
+ Description:
+ Write a program to calculate composite numbers. First, the user is instructed to enter the number of composites to be displayed, and is prompted to enter an integer in the range [1 .. 400]. The user enters a number, n, and the program verifies that 1 <= n <= 400.
+
+ If n is out of range, the user is re- prompted until s/he enters a value in the specified range. The program then calculates and displays all of the composite numbers up to and including the nth composite. The results should be displayed 10 composites per line with at least 3 spaces between the numbers.
