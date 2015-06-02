@@ -20,3 +20,17 @@ Description: Write a program to calculate Fibonacci numbers.
 3. Get and validate the user input (n).
 4. Calculate and display all of the Fibonacci numbers up to and including the nth term. The results should be displayed 5 terms per line with at least 5 spaces between terms.
 5. Display a parting message that includes the user’s name, and terminate the program.
+
+# Project 3
+ Description:
+1. Display the program title and programmer’s name.
+2. Get the user’s name, and greet the user.
+3. Display instructions for the user.
+4. Repeatedly prompt the user to enter a number. Validate the user input to be in [-100, -1] (inclusive).
+		Count and accumulate the valid user numbers until a non-negative number is entered. (The non-
+		negative number is discarded.)
+5. Calculate the (rounded integer) average of the negative numbers. 6. Display:
+	i. the number of negative numbers entered (Note: if no negative numbers were entered, display a special message and skip to iv.)
+	ii. the sum of negative numbers entered
+	iii. the average, rounded to the nearest integer (e.g. -20.5 rounds to -20)
+	iv. a parting message (with the user’s name)
