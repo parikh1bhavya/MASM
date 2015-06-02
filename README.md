@@ -15,6 +15,7 @@ A few examples of MASM x86 Projects
 
 # Project 2
 Description: Write a program to calculate Fibonacci numbers.
+
 1. Display the program title and programmer’s name. Then get the user’s name, and greet the user.
 2. Prompt the user to enter the number of Fibonacci terms to be displayed. Advise the user to enter an integer in the range [1 .. 46].
 3. Get and validate the user input (n).
@@ -23,6 +24,7 @@ Description: Write a program to calculate Fibonacci numbers.
 
 # Project 3
  Description:
+
 1. Display the program title and programmer’s name.
 2. Get the user’s name, and greet the user.
 3. Display instructions for the user.
@@ -43,6 +45,7 @@ Description: Write a program to calculate Fibonacci numbers.
 
 # Project 5
  Write and test a MASM program to perform the following tasks:
+
  1. Introduce the program.
  2. Get a user request in the range [min = 10 .. max = 200].
  3. Generate request random integers in the range [lo = 100 .. hi = 999], storing them in consecutive elements
@@ -53,10 +56,11 @@ Description: Write a program to calculate Fibonacci numbers.
 
 # Project 6
  Description:
-1. User’s numeric input must be validated the hard way: Read the user's input as a string, and convert the string to numeric form. If the user enters non-digits or the number is too large for 32-bit registers, an error message should be displayed and the number should be discarded.
-2. Conversion routines must appropriately use the lodsb and/or stosb operators.
-3. All procedure parameters must be passed on the system stack.
-4. Addresses of prompts, identifying strings, and other memory locations should be passed by address to the macros.
-5. Used registers must be saved and restored by the called procedures and macros.
-6. The stack must be “cleaned up” by the called procedure.
-7. The usual requirements regarding documentation, readability, user-friendliness, etc., apply.
+
+ 1. User’s numeric input must be validated the hard way: Read the user's input as a string, and convert the string to numeric form. If the user enters non-digits or the number is too large for 32-bit registers, an error message should be displayed and the number should be discarded.
+ 2. Conversion routines must appropriately use the lodsb and/or stosb operators.
+ 3. All procedure parameters must be passed on the system stack.
+ 4. Addresses of prompts, identifying strings, and other memory locations should be passed by address to the macros.
+ 5. Used registers must be saved and restored by the called procedures and macros.
+ 6. The stack must be “cleaned up” by the called procedure.
+ 7. The usual requirements regarding documentation, readability, user-friendliness, etc., apply.
