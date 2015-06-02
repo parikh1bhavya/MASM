@@ -50,3 +50,13 @@ Description: Write a program to calculate Fibonacci numbers.
  4. Display the list of integers before sorting, 10 numbers per line.
  5. Sort the list in descending order (i.e., largest first).
  6. Calculate and display the median value, rounded to the nearest integer. 7. Display the sorted list, 10 numbers per line.
+
+# Project 6
+ Description:
+1. User’s numeric input must be validated the hard way: Read the user's input as a string, and convert the string to numeric form. If the user enters non-digits or the number is too large for 32-bit registers, an error message should be displayed and the number should be discarded.
+2. Conversion routines must appropriately use the lodsb and/or stosb operators.
+3. All procedure parameters must be passed on the system stack.
+4. Addresses of prompts, identifying strings, and other memory locations should be passed by address to the macros.
+5. Used registers must be saved and restored by the called procedures and macros.
+6. The stack must be “cleaned up” by the called procedure.
+7. The usual requirements regarding documentation, readability, user-friendliness, etc., apply.
