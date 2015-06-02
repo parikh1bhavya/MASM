@@ -1,8 +1,13 @@
 TITLE Programming Assignment #6 Low Level I/O    (Project06A.asm)
 
 ; Author:									Andrew Pierno
+; OSU Email:								piernoa@onid.oregonstate.edu
+; Course-Section:							CS271-400
+; Assignment Number :						06A
+; Date:										5/19/15
+; Due Date:									6/07/15
 ; Description:
-;1) User’s numeric input must be validated the hard way: Read the user's input as a string, and convert the string to numeric form.
+;1) User’s numeric input must be validated the hard way: Read the user's input as a string, and convert the string to numeric form. 
 ;   If the user enters non-digits or the number is too large for 32-bit registers, an error message should be displayed and the number should be discarded.
 ;2) Conversion routines must appropriately use the lodsb and/or stosb operators.
 ;3) All procedure parameters must be passed on the system stack.
@@ -17,7 +22,7 @@ INCLUDE Irvine32.inc
 .data
 
 welcome					   BYTE	  "Welcome to Low Level I/O by Andrew Pierno.", 0
-instructions_1			   BYTE	  "Please enter 10 unsigned decimal integers.",0
+instructions_1			   BYTE	  "Please enter 10 unsigned decimal integers.",0 
 instructions_2			   BYTE   "Each number must fit inside a 32 bit register. After you've finished, I'll display the list of integers, their sum and their average.", 0
 instructions_3			   BYTE   "Please enter an unsigned integer: ", 0
 aveString				   BYTE	  "The average is: ",0
@@ -28,7 +33,7 @@ enteredString			   BYTE   "For the numbers: ", 0
 sumString				   BYTE   "The sum is: ", 0
 
 request					   DWORD  10 DUP(0)
-requestCount			   DWORD  ?
+requestCount			   DWORD  ? 
 
 ;constants
 MIN				=		 0
@@ -58,7 +63,7 @@ getString MACRO	instruction, request, requestCount
 	mov		ecx, SIZEOF	request
 	call	ReadString
 	mov		requestCount, 00000000h
-	mov		requestCount, eax
+	mov		requestCount, eax	
 
 	pop     ebx
 	pop		eax
@@ -148,7 +153,7 @@ changeColor	ENDP
 ; Receives:			 welcome, instructions_1, and instructions_2 are global variables
 ; Returns:		     nothing
 ; Preconditions:	 welcome, instructions_1, and instructions_2 must be set to strings
-; Registers Changed: edx,
+; Registers Changed: edx, 
 ; ******************************************************************************************************
 
 introduction PROC
@@ -175,7 +180,7 @@ introduction ENDP
 ; Description :		 Procedure to get and validate an integer from the user and turn the decimal into a string.
 ; Receives:			 an array to store values in, a buffer to read the input
 ; Returns:			 puts user's integers into an array of strings
-; Preconditions:	 must declare an array, and a way to count the number of digits entered as well as a place to store the original
+; Preconditions:	 must declare an array, and a way to count the number of digits entered as well as a place to store the original 
 ;					 decimal input.
 ; Registers Changed: edx, eax, ecx, ebx
 ; ******************************************************************************************************
@@ -183,11 +188,11 @@ readVal PROC
 
 		push  ebp
 		mov	  ebp, esp
-		mov	  ecx, 10								; we need 10 numbers total.
+		mov	  ecx, 10								; we need 10 numbers total. 
 		mov	  edi, [ebp+16]							; we want to store stuff in the list array
 
-	userNumberLoop:
-
+	userNumberLoop: 	
+					
 					getString instructions_3, request, requestCount    ; Call Macro
 
 					push	ecx
@@ -197,15 +202,15 @@ readVal PROC
 					cld								; were moving forward through the array
 					mov		eax, 00000000			; clear eax
 					mov		ebx, 00000000			; we will use ebx as ACCUMULATOR
-
+					
 						str2int:
 							lodsb					; this should load request into eax one byte at a time
-
+							
 							cmp		eax, LO			; error checking
 							jb		errMessage		; error checking
 							cmp		eax, HI			; error checking
 							ja		errMessage		; error checking
-
+							
 							sub		eax, LO			; 30
 							push	eax
 							mov		eax, ebx
@@ -215,19 +220,19 @@ readVal PROC
 							pop		eax
 							add		ebx, eax
 							mov		eax, ebx
-
+							
 							continn:
 							mov		eax, 00000000
 							loop	str2int
 
-					mov		eax,ebx
+					mov		eax,ebx 
 					stosd							; put eax into list array
-
+					
 					add		esi, 4					; next element
-					pop		ecx
+					pop		ecx						
 					loop	userNumberLoop
 					jmp		readValEnd
-
+		
 		errMessage:
 				pop		ecx
 				mov		edx, OFFSET  errString
@@ -236,7 +241,7 @@ readVal PROC
 				jmp		userNumberLoop
 
 	readValEnd:
-	pop ebp
+	pop ebp			
 	ret 12													; clean up the stack.
 readVal ENDP
 
@@ -245,9 +250,9 @@ readVal ENDP
 ; writeVal PROCEDURE:
 ; Description :		 uses MACRO displayString to convert strings to ascii and prints it out
 ; Receives:			 list: @array and request: number of array elements
-; Returns:			 nothing but prints out the string in ascii digits.
-; Preconditions:	 must have an array of integers as strings.
-; Registers Changed: eax, ecx, ebx, edx
+; Returns:			 nothing but prints out the string in ascii digits. 
+; Preconditions:	 must have an array of integers as strings. 
+; Registers Changed: eax, ecx, ebx, edx 
 ; ******************************************************************************************************
 
 writeVal PROC
@@ -255,7 +260,7 @@ writeVal PROC
 	mov		ebp, esp
 	mov		edi, [ebp + 8]				; @list
 	mov		ecx, 10
-	L1:
+	L1:	
 				push	ecx
 				mov		eax, [edi]
 			    mov		ecx, 10         ; divisor!
@@ -276,30 +281,30 @@ writeVal PROC
 				pop		ax
 				add		ax, '0'					  ; convert each number to ASCII
 				mov		[esi], ax				  ; then write to strResult
-
+				
 				displayString OFFSET strResult
 
 				loop	next_digit
-
-		pop		ecx
+			
+		pop		ecx 
 		mov		edx,	OFFSET spaces
 		call	WriteString
 		mov		edx, 0
 		mov		ebx, 0
 		add		edi, 4
 		loop L1
-
-	pop		ebp
+	
+	pop		ebp			
 	ret		8											; clean up the stack. we only have 1 extra DWORD to get rid of.
 writeVal ENDP
 
 
 ; ******************************************************************************************************
 ; displayAve PROCEDURE:
-; Description :		 Takes an array of numbers and prints out the average and sum.
-; Receives:			 list: @array
+; Description :		 Takes an array of numbers and prints out the average and sum. 
+; Receives:			 list: @array 
 ; Returns:			 nothing but prints out average and sum of the array
-; Preconditions:	 the array must be filled with integers  as integers, not strings.
+; Preconditions:	 the array must be filled with integers  as integers, not strings. 
 ; Registers Changed: eax, ebx, ecx, edx
 ; ******************************************************************************************************
 
@@ -307,7 +312,7 @@ displayAve PROC
 	push ebp
 	mov  ebp, esp
 	mov  esi, [ebp + 8]  ; @list
-	mov	 eax, 10										; loop control
+	mov	 eax, 10										; loop control 
 	mov  edx, 0
 	mov	 ebx, 0
 	mov	 ecx, eax
@@ -317,9 +322,9 @@ displayAve PROC
 		add		ebx, eax
 		add		esi, 4
 		loop	medianLoop
-
+	
 	endMedianLoop:
-
+	
 	mov		edx, 0
 	mov		eax, ebx
 	mov		edx, [ebp+12]
@@ -347,21 +352,21 @@ displayAve ENDP
 ; Receives:		     goodbye is global variables.
 ; Returns:			 nothing
 ; Preconditions:	 goodbyte must be set to strings.
-; Registers Changed: edx,
+; Registers Changed: edx,  
 ; ******************************************************************************************************
 
 farewell PROC
-
+	
 	push	ebp
 	mov		ebp, esp
 	mov		edx, [ebp + 8]							; @goodbye string
 
-	call	CrLf
+	call	CrLf	
 	call	WriteString
 	call	CrLf
 	pop		ebp
 	ret		4
-
+	
 farewell ENDP
 
 exit
